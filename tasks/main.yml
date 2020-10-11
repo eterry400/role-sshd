@@ -1,9 +1,20 @@
 ---
-# tasks file for sshd
-hosts: all
-  tasks:
-     -name: Restrict root login
-     lineinfile:
-             path: /etc/ssh/sshd_config
-     regexp: '^PermitRootLogin prohibit-password'
-     line: PermitRootLogin=prohibit-password
+- name: Coyp Banner
+  copy:
+    src: Banner
+    dest: /etc/Banner
+
+- name: Restrict root login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin'
+    line: PermitRootLogin prohibit-password
+  notify: restart sshd
+
+- name: Setup banner
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^Banner'
+    line: Banner /etc/Banner
+  notify: restart sshd
+
