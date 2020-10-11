@@ -1,0 +1,9 @@
+---
+# tasks file for sshd
+hosts: all
+  tasks:
+     -name: Restrict root login
+     lineinfile:
+             path: /etc/ssh/sshd_config
+     regexp: '^PermitRootLogin prohibit-password'
+     line: PermitRootLogin=prohibit-password
