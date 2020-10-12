@@ -1,7 +1,7 @@
-Role Name
+role-sshd
 =========
 
-A brief description of the role goes here.
+This role is used to update the /etc/sshd_config file
 
 Requirements
 ------------

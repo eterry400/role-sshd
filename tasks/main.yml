@@ -1,9 +1,4 @@
 ---
-- name: Coyp Banner
-  copy:
-    src: Banner
-    dest: /etc/Banner
-
 - name: Restrict root login
   lineinfile:
     path: /etc/ssh/sshd_config
